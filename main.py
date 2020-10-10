@@ -29,6 +29,10 @@ class Player(arcade.Sprite):
 
     def update_angle(self, mouse_list):
         self.radians = atan2(mouse_list['y'] - self.center_y, mouse_list['x'] - self.center_x)
+
+class Guard(arcade.Sprite):
+    def __init__(self):
+        super().__init__("guard.jpg", SPRITE_SCALING)
         
 
 class MyGame(arcade.Window):
@@ -44,11 +48,14 @@ class MyGame(arcade.Window):
         arcade.set_background_color(arcade.color.AMAZON)
 
     def setup(self):
+        
+
         self.player_list = arcade.SpriteList()
         self.player_sprite = Player()
         self.player_sprite.center_x = 50
         self.player_sprite.center_y = 50
         self.player_list.append(self.player_sprite)
+
         self.mouse =arcade.View()
         self.mouse_pos = {'x': self.player_sprite.center_x, 'y': self.player_sprite.center_y, 'dx': 0, 'dy': 0}
 
